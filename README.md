@@ -1,19 +1,19 @@
 NAME
 ====
 
-Interface - blah blah blah
+Role::Implicit - Golang-inspired interfaces
 
 SYNOPSIS
 ========
 
 ```raku
-use Interface;
+use Role::Implicit;
 ```
 
 DESCRIPTION
 ===========
 
-Interface is ...
+Role::Implicit
 
 AUTHOR
 ======

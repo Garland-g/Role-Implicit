@@ -1,6 +1,65 @@
 use Test;
-use Interface;
+use Role::Implicit;
 
-pass "replace me";
+irole Simple-Role {
+    method simple() { ... }
+}
+
+irole Greeter-Role {
+    method greeting(Str $name --> Str) { ... }
+}
+
+class Simple {
+    method simple() {
+        say "simple";
+    }
+}
+
+class Greeter {
+    method greeting(Str $name --> Str) {
+        return "Hello, $name";
+    }
+}
+
+sub greet(Greeter-Role $greeter) {
+    $greeter.greeting("test");
+}
+
+lives-ok {
+    greet(Greeter)
+}, <Can pass Greeter as a Greeter-Role>;
+
+{
+    dies-ok {
+        EVAL '{ warn greet(Simple) }'
+    }, <Cannot pass Simple as a Greeter-Role, fails at compile-time>
+}
+
+{
+    my irole Weird-Greeter{
+        method greeting(Int $name --> Str) { ... }
+    }
+
+    sub weird-greet(Weird-Greeter $greeter) {
+        $greeter.greeting(37);
+    }
+
+    dies-ok {
+        EVAL '{ warn weird-greet(Greeter)}'
+    }, <Cannot pass Greeter as a Weird-Greeter (Parameter 1 type does not match), fails at compile-time>
+}
+
+{
+    my irole Weird-Greeter {
+        method greeting(Str $name --> Int) { ... }
+    }
+
+    sub weird-greet(Weird-Greeter $greeter) {
+        $greeter.greeting("test");
+    }
+    dies-ok {
+        EVAL '{ warn weird-greet(Greeter)}'
+    }, <Cannot pass Greeter as a Weird-Greeter (return type), fails at compile-time>
+}
 
 done-testing;

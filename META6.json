@@ -6,12 +6,12 @@
   ],
   "depends": [
   ],
-  "description": "blah blah blah",
+  "description": "Golang-inspired interfaces",
   "license": "Artistic-2.0",
-  "name": "Interface",
+  "name": "Role::Implicit",
   "perl": "6.d",
   "provides": {
-    "Interface": "lib/Interface.rakumod"
+    "Role::Implicit": "lib/Role/Implicit.rakumod"
   },
   "resources": [
   ],
