@@ -1,0 +1,24 @@
+{
+  "authors": [
+    "Travis Gibson"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "blah blah blah",
+  "license": "Artistic-2.0",
+  "name": "Interface",
+  "perl": "6.d",
+  "provides": {
+    "Interface": "lib/Interface.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
